@@ -1,0 +1,261 @@
+:root {
+  --color-brand-primary: #2d6a4f;
+  --color-brand-secondary: #d4a373;
+  --color-brand-accent: #e76f51;
+  --color-brand-light: #fefae0;
+  --color-brand-dark: #1b3a2d;
+  --color-brand-muted: #a3b18a;
+  --font-display: 'DM Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@theme {
+  --color-white: #ffffff;
+  --color-brand-primary: #2d6a4f;
+  --color-brand-secondary: #d4a373;
+  --color-brand-accent: #e76f51;
+  --color-brand-light: #fefae0;
+  --color-brand-dark: #1b3a2d;
+  --color-brand-muted: #a3b18a;
+  --font-display: 'DM Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Modern header */
+.header-nav {
+  background: rgba(254, 250, 224, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(45, 106, 79, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.category-pill {
+  background-color: transparent;
+  border: none;
+  color: var(--color-brand-dark);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
+}
+
+.category-pill:hover {
+  opacity: 1;
+  background-color: rgba(45, 106, 79, 0.15);
+  color: var(--color-brand-dark);
+}
+
+.category-pill.active,
+.category-pill.active:hover {
+  background-color: var(--color-brand-primary) !important;
+  color: #ffffff !important;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(45, 106, 79, 0.3);
+}
+
+/* Cart badge styling */
+#cart-badge {
+  background-color: var(--color-brand-accent) !important;
+  color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 9999px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  border: 2px solid white !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+  line-height: 1 !important;
+}
+
+#cart-badge.hidden {
+  display: none !important;
+}
+
+/* Cart drawer slide animation */
+#cart-drawer .cart-panel {
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#cart-drawer .cart-panel.open {
+  transform: translateX(0);
+}
+
+#cart-drawer .cart-backdrop {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#cart-drawer .cart-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal animation */
+#product-modal .modal-backdrop {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+#product-modal .modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#product-modal .modal-content {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+#product-modal .modal-backdrop.open .modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Product card hover effects */
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .img-secondary {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .img-secondary {
+  opacity: 1;
+}
+
+.product-card:hover .img-primary {
+  opacity: 0;
+}
+
+.product-card .img-primary {
+  transition: opacity 0.3s ease;
+}
+
+/* Add to cart button animation */
+.btn-add-cart {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-add-cart:hover {
+  background-color: var(--color-brand-primary) !important;
+  color: #ffffff !important;
+}
+
+.btn-add-cart:active {
+  transform: scale(0.95);
+}
+
+.modal-add-cart {
+  background-color: var(--color-brand-primary) !important;
+  color: #ffffff !important;
+}
+
+.modal-add-cart:hover {
+  background-color: var(--color-brand-dark) !important;
+}
+
+#cart-toggle:hover {
+  background-color: var(--color-brand-primary) !important;
+  color: #ffffff !important;
+}
+
+#cart-toggle:hover svg {
+  color: #ffffff !important;
+}
+
+/* Ensure white text is actually white and takes precedence */
+.text-white, 
+button.bg-brand-primary,
+button.bg-brand-accent,
+.bg-brand-primary.text-white,
+.bg-brand-accent.text-white,
+.bg-brand-primary .text-white,
+.bg-brand-accent .text-white {
+  color: #ffffff !important;
+}
+
+/* Sale badge pulse */
+.sale-badge {
+  animation: pulse-soft 2s infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Skeleton loading shimmer */
+.skeleton {
+  background: linear-gradient(90deg, #e8e4d9 25%, #f5f0e3 50%, #e8e4d9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+/* Quantity input styling */
+.qty-btn {
+  transition: background-color 0.15s ease;
+}
+
+.qty-btn:hover {
+  background-color: var(--color-brand-primary);
+  color: white;
+}
+
+/* Scrollbar styling for cart */
+.cart-items::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cart-items::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+  background: var(--color-brand-muted);
+  border-radius: 2px;
+}
+
+/* Product description in modal */
+.product-description ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.product-description li {
+  margin-bottom: 0.25rem;
+}
+
+.product-description strong {
+  font-weight: 600;
+  color: var(--color-brand-dark);
+}
+
+/* Hero section above grid */
+.hero-section {
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-dark));
+}
